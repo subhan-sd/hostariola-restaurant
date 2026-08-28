@@ -1,0 +1,85 @@
+---
+import type { Dict } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+---
+
+<section class="section ingredients on-ivory">
+  <div class="wrap ingredients-inner">
+    <p class="ingredients-claim reveal">{t.ingredients.claim}</p>
+    <div class="ingredients-tags reveal">
+      {
+        t.ingredients.tags.map((tag) => (
+          <span class="ingredient-tag">{tag}</span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .ingredients {
+    background: var(--ivory);
+    padding-block: clamp(2.4rem, 5vw, 3.2rem);
+  }
+
+  .ingredients-inner {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.4rem, 3vw, 2.2rem);
+  }
+
+  .ingredients-claim {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .ingredients-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+    justify-content: center;
+  }
+
+  .ingredient-tag {
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--umber);
+    position: relative;
+  }
+
+  .ingredient-tag::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1.4rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--wine);
+    transform: translateY(-50%);
+  }
+  .ingredient-tag:first-child::before {
+    left: 0;
+  }
+
+  @media (max-width: 560px) {
+    .ingredients-tags {
+      gap: 1.4rem;
+    }
+    .ingredient-tag {
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+    }
+  }
+</style>

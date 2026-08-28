@@ -61,10 +61,13 @@ export const en = {
   story: {
     label: "Our Story",
     title: "Where tradition meets the pleasure of being together.",
-    p1: "Hostariola sits quietly in Colorno, in the heart of the emulsioned countryside of Parma. Here the season sets the table: vegetables from nearby fields, La Parmigiana from the dairies of the lowlands, and cured meats that have been aged, for generations, in the cellars of these lands.",
-    p2: "Our kitchen keeps the rhythm of Emilia — handmade pasta rolled each morning, slow braises that wait all day for the evening, and a dining room that fills slowly with conversation and the sound of glasses. We cook the way we were taught, and we serve it the way it has always been best enjoyed: shared.",
-    p3: "A table at Hostariola is not a transaction. It is an invitation to slow down, to sit a little longer, to taste what this region has spent a lifetime perfecting.",
+    p1: "Hostariola sits quietly in Colorno, on the edge of the Emilian countryside of Parma, where the land arrives at the table still warm from the day.",
+    p2: "A place to discover the flavors of Emilia-Romagna, enjoy good food, and share time around the table.",
     quote: "Piacere, slow down and enjoy.",
+  },
+  ingredients: {
+    claim: "Seasonal ingredients, traditional flavors, and the spirit of Emilia-Romagna.",
+    tags: ["Seasonal", "Traditional", "Local"],
   },
   dishes: {
     label: "Signature Dishes",
@@ -130,7 +133,7 @@ export const en = {
   menu: {
     label: "The Menu",
     title: "From the Kitchen, with the Season",
-    sub: "An illustrative menu for this presentation. Dishes and prices are placeholders and will follow the season.",
+    sub: "A sample selection for this concept. Final dishes and prices can be updated by Hostariola.",
     sections: [
       {
         title: "Antipasti",
@@ -233,12 +236,12 @@ export const en = {
         ] as MenuItem[],
       },
     ] as { title: string; items: MenuItem[] }[],
-    note: "Demonstration menu — prices and dishes may vary.",
+    note: "A sample selection for this concept. Final dishes and prices can be updated by Hostariola.",
     cta: "View Full Menu",
   },
   reserve: {
     label: "Reservations",
-    title: "Your Table Awaits",
+    title: "Request a Table",
     sub: "Join us for an authentic taste of Emilia and a warm Italian dining experience.",
     form: {
       name: "Name",
@@ -253,7 +256,7 @@ export const en = {
       submit: "Book a Table",
       success:
         "Grazie! Your request has been received. We will confirm shortly.",
-      demo: "Demo form — details are placeholders.",
+      demo: "Reservation integration can be connected to your preferred booking system.",
     },
     ctaCall: "Call the Restaurant",
   },
@@ -312,10 +315,13 @@ export const it: Dict = {
   story: {
     label: "La Nostra Storia",
     title: "Dove la tradizione incontra il piacere di stare insieme.",
-    p1: "Hostariola sorge tranquilla a Colorno, nel cuore della campagna parmigiana. Qui \u00e8 la stagione a mettere la tavola: ortaggi dai campi vicini, la Parmigiana dalle latterie della bassa e salumi stagionati da generazioni nelle cantine di queste terre.",
-    p2: "La nostra cucina segue il ritmo dell\u2019Emilia \u2014 pasta fatta a mano ogni mattina, cotture lente che aspettano la sera, e una sala che si riempie piano di conversazioni e di brindisi. Cuciniamo come ci hanno insegnato e serviamo come si fa da sempre: condividendo.",
-    p3: "Un tavolo da Hostariola non \u00e8 una transazione. \u00c8 un invito a rallentare, a restare un po\u2019 pi\u00f9 a lungo, ad assaggiare quello che questa terra ha perfezionato in una vita.",
+    p1: "Hostariola sorge tranquilla a Colorno, sulle falde della campagna parmigiana, dove la terra arriva a tavola ancora tiepida della giornata.",
+    p2: "Un posto per scoprire i sapori dell\u2019Emilia-Romagna, gustare cibo buono e condividere tempo attorno al tavolo.",
     quote: "Piacere: mangiate e godetevi.",
+  },
+  ingredients: {
+    claim: "Ingredienti di stagione, sapori tradizionali e lo spirito dell\u2019Emilia-Romagna.",
+    tags: ["Stagionali", "Tradizionali", "Locali"],
   },
   dishes: {
     label: "Piatti Signature",
@@ -484,12 +490,12 @@ export const it: Dict = {
         ] as MenuItem[],
       },
     ] as { title: string; items: MenuItem[] }[],
-    note: "Menu dimostrativo \u2014 prezzi e piatti possono variare.",
+    note: "Una selezione campione per questo concept. I piatti e i prezzi finali possono essere aggiornati da Hostariola.",
     cta: "Visualizza il Menu Completo",
   },
   reserve: {
     label: "Prenotazioni",
-    title: "Il Tuo Tavolo Ti Aspetta",
+    title: "Richiedi un Tavolo",
     sub: "Unisciti a noi per un autentico assaggio dell\u2019Emilia e una calorosa esperienza italiana.",
     form: {
       name: "Nome",
@@ -504,7 +510,7 @@ export const it: Dict = {
       submit: "Prenota un Tavolo",
       success:
         "Grazie! La tua richiesta \u00e8 stata ricevuta. Ti confermeremo a breve.",
-      demo: "Modulo dimostrativo \u2014 dati segnaposto.",
+      demo: "L\u2019integrazione per le prenotazioni può essere collegata al tuo sistema preferito.",
     },
     ctaCall: "Chiama il Ristorante",
   },
