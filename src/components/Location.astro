@@ -48,25 +48,25 @@ const mapsUrl = t.location.mapUrl;
     <div class="reveal map-wrap">
       <div class="map" role="img" aria-label={t.location.title}>
         <svg class="map-svg" viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="600" height="460" fill="#dfd4ba" />
-          <g stroke="#c3b28e" stroke-width="22" fill="none">
-            <path d="M90 0 Q140 150 90 460" />
-            <path d="M520 0 Q470 210 560 460" />
-            <path d="M-40 150 Q330 130 640 175" />
-            <path d="M-40 330 Q260 290 640 330" />
-          </g>
-          <g stroke="#efe6d3" stroke-width="11" fill="none">
-            <path d="M140 0 Q170 180 120 460" />
-            <path d="M590 220 Q430 240 370 460" />
-          </g>
-          <g fill="#a3a07a">
-            <circle cx="210" cy="120" r="8" />
-            <circle cx="450" cy="300" r="6" />
-            <circle cx="330" cy="90" r="5" />
-          </g>
-          <circle cx="300" cy="225" r="26" fill="#efe6d3" opacity="0.25" />
-          <circle cx="300" cy="225" r="9" fill="#76272b" stroke="#f7f2e8" stroke-width="3" />
-          <circle cx="300" cy="225" r="30" fill="none" stroke="#76272b" stroke-width="1.5" opacity="0.5" />
+    <rect width="600" height="460" fill="#e9e1d1" />
+    <g stroke="#c9b088" stroke-width="22" fill="none">
+      <path d="M90 0 Q140 150 90 460" />
+      <path d="M520 0 Q470 210 560 460" />
+      <path d="M-40 150 Q330 130 640 175" />
+      <path d="M-40 330 Q260 290 640 330" />
+    </g>
+    <g stroke="#f7f3ed" stroke-width="11" fill="none">
+      <path d="M140 0 Q170 180 120 460" />
+      <path d="M590 220 Q430 240 370 460" />
+    </g>
+    <g fill="#a3a07a">
+      <circle cx="210" cy="120" r="8" />
+      <circle cx="450" cy="300" r="6" />
+      <circle cx="330" cy="90" r="5" />
+    </g>
+    <circle cx="300" cy="225" r="26" fill="#f7f3ed" opacity="0.25" />
+    <circle cx="300" cy="225" r="9" fill="#1367a8" stroke="#f7f3ed" stroke-width="3" />
+    <circle cx="300" cy="225" r="30" fill="none" stroke="#1367a8" stroke-width="1.5" opacity="0.5" />
         </svg>
         <div class="map-label">
           <span class="map-label-brand">{t.brand}</span>
@@ -208,12 +208,11 @@ const mapsUrl = t.location.mapUrl;
     font-size: 0.95rem;
   }
 
-  .map-label-place {
+.map-label-place {
     font-size: 0.68rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--umber);
-    margin-top: 0.2rem;
   }
 
   .map-ctas {

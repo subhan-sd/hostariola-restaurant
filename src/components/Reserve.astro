@@ -13,13 +13,6 @@ const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
 <section class="section reserve" id="reserve">
   <div class="wrap reserve-grid">
     <div class="reserve-copy">
-      <div class="seal reveal" aria-hidden="true">
-        <div class="seal-inner">
-          <span>Prenotazione</span>
-          <span class="seal-core">H</span>
-          <span>Ristorante</span>
-        </div>
-      </div>
       <p class="label reveal">{t.reserve.label}</p>
       <h2 class="h-serif reveal reserve-title">{t.reserve.title}</h2>
       <p class="reveal reserve-sub">{t.reserve.sub}</p>
@@ -76,24 +69,24 @@ const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
 
 <style>
   .reserve {
-    background: radial-gradient(90% 120% at 15% 0%, #2c2820 0%, var(--ink) 55%)
+    background: radial-gradient(90% 120% at 15% 0%, #0b1f3a 0%, var(--ink) 55%)
       var(--ink);
     color: var(--ivory);
     position: relative;
     overflow: hidden;
   }
 
-  .reserve::before {
-    content: '';
-    position: absolute;
-    width: 40rem;
-    height: 40rem;
-    right: -16rem;
-    top: -16rem;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(118, 39, 43, 0.35), transparent 65%);
-    pointer-events: none;
-  }
+.reserve::before {
+  content: '';
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  right: -16rem;
+  top: -16rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(19, 103, 168, 0.35), transparent 65%);
+  pointer-events: none;
+}
 
   .reserve-grid {
     display: grid;
@@ -130,45 +123,8 @@ const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
     transition: transform 0.3s var(--ease);
   }
 
-  .wa-btn:hover svg {
+.wa-btn:hover svg {
     transform: scale(1.15);
-  }
-
-  /* wine seal */
-  .seal {
-    width: clamp(6.4rem, 10vw, 8.4rem);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 1px solid rgba(247, 242, 232, 0.55);
-    display: grid;
-    place-items: center;
-    margin-bottom: 2.2rem;
-    box-shadow:
-      inset 0 0 0 4px var(--ink),
-      inset 0 0 0 5px rgba(247, 242, 232, 0.55);
-    background: var(--wine);
-    color: var(--ivory);
-    transform: rotate(-8deg);
-  }
-
-  .seal-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    font-size: 0.52rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.3;
-  }
-
-  .seal-core {
-    font-family: var(--font-display);
-    font-size: 2.6rem;
-    line-height: 1;
-    letter-spacing: 0.05em;
-    margin: 0.2rem 0;
   }
 
   .reserve-form {
@@ -217,7 +173,7 @@ const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
   .field input:focus,
   .field select:focus {
     outline: none;
-    border-color: #e0b98c;
+    border-color: var(--umber);
   }
 
   .field input::placeholder {
@@ -259,9 +215,6 @@ const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
     }
     .reserve-copy {
       position: static;
-    }
-    .seal {
-      margin-bottom: 1.6rem;
     }
     .reserve-form {
       grid-template-columns: 1fr;

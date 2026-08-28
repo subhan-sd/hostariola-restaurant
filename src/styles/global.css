@@ -1,14 +1,15 @@
 :root {
-  --ivory: #f7f2e8;
-  --cream: #efe6d3;
-  --olive: #2e3a2c;
-  --olive-soft: #3c4a39;
-  --wine: #76272b;
-  --umber: #8a6b4d;
-  --ink: #221f19;
-  --ink-soft: #5c5344;
-  --line: rgba(34, 31, 25, 0.16);
-  --line-light: rgba(247, 242, 232, 0.22);
+  --ivory: #f7f3ed;
+  --cream: #e9e1d1;
+  --olive: #132c4d;        /* fallback; overridden below as navy */
+  --olive: #0b2e59;        /* dark section background / dark CTA */
+  --olive-soft: #1d4273;   /* hover tint of dark CTA */
+  --wine: #1367a8;         /* brand blue: links, CTA, seals, map pin */
+  --umber: #c9b088;        /* gold: accents, eyebrows */
+  --ink: #0b2e59;          /* strong text on light */
+  --ink-soft: #626262;
+  --line: rgba(11, 46, 89, 0.13);
+  --line-light: rgba(247, 243, 237, 0.26);
 
   --font-display: 'Fraunces', 'Georgia', serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -149,7 +150,7 @@ a {
 }
 
 .btn--wine:hover {
-  background: #5f1e21;
+  background: #0f5389;
 }
 
 .btn--olive {
