@@ -1,0 +1,260 @@
+---
+import type { Dict } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const phone = t.location.phone.replace(/[^\d+]/g, '');
+const times = ['12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00'];
+---
+
+<section class="section reserve" id="reserve">
+  <div class="wrap reserve-grid">
+    <div class="reserve-copy">
+      <div class="seal reveal" aria-hidden="true">
+        <div class="seal-inner">
+          <span>Prenotazione</span>
+          <span class="seal-core">H</span>
+          <span>Ristorante</span>
+        </div>
+      </div>
+      <p class="label reveal">{t.reserve.label}</p>
+      <h2 class="h-serif reveal reserve-title">{t.reserve.title}</h2>
+      <p class="reveal reserve-sub">{t.reserve.sub}</p>
+      <a class="btn btn--ghost-light reveal" href={`tel:${phone}`}>{t.reserve.ctaCall}</a>
+    </div>
+
+    <form class="reserve-form reveal" aria-label={t.reserve.title}>
+      <div class="field">
+        <label for="rv-name">{t.reserve.form.name}</label>
+        <input id="rv-name" name="name" type="text" autocomplete="name" required placeholder={t.reserve.form.namePh} />
+      </div>
+      <div class="field">
+        <label for="rv-email">{t.reserve.form.email}</label>
+        <input id="rv-email" name="email" type="email" autocomplete="email" required placeholder={t.reserve.form.emailPh} />
+      </div>
+      <div class="field">
+        <label for="rv-date">{t.reserve.form.date}</label>
+        <input id="rv-date" name="date" type="date" required />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="rv-time">{t.reserve.form.time}</label>
+          <select id="rv-time" name="time" required>
+            {
+              times.map((time) => <option value={time}>{time}</option>)
+            }
+          </select>
+        </div>
+        <div class="field">
+          <label for="rv-guests">{t.reserve.form.guests}</label>
+          <select id="rv-guests" name="guests" required>
+            <option value="1">{t.reserve.form.guestOne}</option>
+            {
+              Array.from({ length: 7 }, (_, n) => (
+                <option value={n + 2}>{t.reserve.form.guestMany(n + 2)}</option>
+              ))
+            }
+          </select>
+        </div>
+      </div>
+      <button class="btn btn--wine reserve-submit" type="submit">{t.reserve.form.submit}</button>
+      <p class="field-note">{t.reserve.form.demo}</p>
+    </form>
+
+    <p class="reserve-success" role="status" hidden>{t.reserve.form.success}</p>
+  </div>
+</section>
+
+<style>
+  .reserve {
+    background: radial-gradient(90% 120% at 15% 0%, #2c2820 0%, var(--ink) 55%)
+      var(--ink);
+    color: var(--ivory);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reserve::before {
+    content: '';
+    position: absolute;
+    width: 40rem;
+    height: 40rem;
+    right: -16rem;
+    top: -16rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(118, 39, 43, 0.35), transparent 65%);
+    pointer-events: none;
+  }
+
+  .reserve-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reserve-copy {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .reserve-title {
+    font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+    margin: 1.2rem 0 1.2rem;
+  }
+
+  .reserve-sub {
+    max-width: 38ch;
+    color: rgba(247, 242, 232, 0.82);
+    margin-bottom: 2rem;
+  }
+
+  /* wine seal */
+  .seal {
+    width: clamp(6.4rem, 10vw, 8.4rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(247, 242, 232, 0.55);
+    display: grid;
+    place-items: center;
+    margin-bottom: 2.2rem;
+    box-shadow:
+      inset 0 0 0 4px var(--ink),
+      inset 0 0 0 5px rgba(247, 242, 232, 0.55);
+    background: var(--wine);
+    color: var(--ivory);
+    transform: rotate(-8deg);
+  }
+
+  .seal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .seal-core {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    margin: 0.2rem 0;
+  }
+
+  .reserve-form {
+    background: rgba(247, 242, 232, 0.06);
+    border: 1px solid rgba(247, 242, 232, 0.18);
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    grid-column: 1 / -1;
+  }
+
+  .field label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 232, 0.72);
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    background: rgba(20, 18, 14, 0.45);
+    border: 1px solid rgba(247, 242, 232, 0.28);
+    border-radius: 0;
+    color: var(--ivory);
+    padding: 0.85rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    transition: border-color 0.3s;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: #e0b98c;
+  }
+
+  .field input::placeholder {
+    color: rgba(247, 242, 232, 0.45);
+  }
+
+  .field select option {
+    color: var(--ink);
+  }
+
+  .reserve-submit {
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+  }
+
+  .field-note {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: rgba(247, 242, 232, 0.5);
+  }
+
+  .reserve-success {
+    grid-column: 1 / -1;
+    background: rgba(247, 242, 232, 0.07);
+    border: 1px solid rgba(247, 242, 232, 0.25);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 860px) {
+    .reserve-grid {
+      grid-template-columns: 1fr;
+    }
+    .reserve-copy {
+      position: static;
+    }
+    .seal {
+      margin-bottom: 1.6rem;
+    }
+    .reserve-form {
+      grid-template-columns: 1fr;
+    }
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reserve-form {
+      grid-template-columns: 1fr;
+    }
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

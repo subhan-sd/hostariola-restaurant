@@ -1,0 +1,169 @@
+---
+import type { Dict } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+---
+
+<section class="section menu" id="menu">
+  <div class="wrap wrap--narrow">
+    <div class="reveal menu-head">
+      <p class="label">{t.menu.label}</p>
+      <h2 class="h-serif menu-title">{t.menu.title}</h2>
+      <p class="menu-sub">{t.menu.sub}</p>
+    </div>
+
+    <div class="menu-columns">
+      {
+        t.menu.sections.map((section, col) => (
+          <div class="menu-col reveal" style={`--delay:${col * 90}ms`}>
+            <h3 class="menu-cat">
+              <span>{section.title}</span>
+            </h3>
+            <ul class="menu-list">
+              {
+                section.items.map((item) => (
+                  <li class="menu-item">
+                    <div class="menu-row">
+                      <span class="menu-name">{item.name}</span>
+                      <span class="menu-dots" aria-hidden="true"></span>
+                      <span class="menu-price">{item.price}</span>
+                    </div>
+                    <p class="menu-desc">{item.desc}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="menu-note reveal">{t.menu.note}</p>
+    <div class="menu-cta reveal">
+      <a class="btn btn--olive" href="#reserve">{t.menu.cta}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu {
+    background: var(--ivory);
+  }
+
+  .menu-head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-head .label::before {
+    display: none;
+  }
+
+  .menu-title {
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    margin: 1.2rem 0 0;
+  }
+
+  .menu-sub {
+    margin: 1rem 0 0;
+    max-width: 40ch;
+    color: var(--ink-soft);
+  }
+
+  .menu-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .menu-cat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 480;
+    font-size: 1.15rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 1.6rem;
+    padding: 0.9rem 1rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .menu-cat span {
+    padding-inline: 0.8rem;
+  }
+
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .menu-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+
+  .menu-name {
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 480;
+    line-height: 1.3;
+  }
+
+  .menu-dots {
+    flex: 1;
+    border-bottom: 1px dotted rgba(34, 31, 25, 0.45);
+    transform: translateY(-4px);
+  }
+
+  .menu-price {
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .menu-desc {
+    margin: 0.35rem 0 0;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .menu-note {
+    margin: 2.4rem auto 0;
+    max-width: 34rem;
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--umber);
+  }
+
+  .menu-cta {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .menu-columns {
+      grid-template-columns: 1fr;
+      gap: 2.4rem;
+    }
+  }
+</style>

@@ -1,0 +1,231 @@
+:root {
+  --ivory: #f7f2e8;
+  --cream: #efe6d3;
+  --olive: #2e3a2c;
+  --olive-soft: #3c4a39;
+  --wine: #76272b;
+  --umber: #8a6b4d;
+  --ink: #221f19;
+  --ink-soft: #5c5344;
+  --line: rgba(34, 31, 25, 0.16);
+  --line-light: rgba(247, 242, 232, 0.22);
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --wrap: 76rem;
+  --wrap-narrow: 58rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--wine);
+  color: var(--ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.wrap--narrow {
+  max-width: var(--wrap-narrow);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+/* Eyebrow label */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--umber);
+}
+
+.label::before {
+  content: '';
+  width: 2.2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.on-dark .label,
+.on-olive .label {
+  color: var(--cream);
+}
+
+/* Type scale */
+.h-serif {
+  font-family: var(--font-display);
+  font-weight: 420;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.7rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--wine {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: var(--ivory);
+}
+
+.btn--wine:hover {
+  background: #5f1e21;
+}
+
+.btn--olive {
+  background: var(--olive);
+  border-color: var(--olive);
+  color: var(--ivory);
+}
+
+.btn--olive:hover {
+  background: var(--olive-soft);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.btn--ghost-light {
+  background: transparent;
+  border-color: var(--ivory);
+  color: var(--ivory);
+}
+
+.btn--ghost-light:hover {
+  background: var(--ivory);
+  color: var(--olive);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-img {
+  overflow: hidden;
+}
+
+.reveal-img img {
+  transform: scale(1.07);
+  transition: transform 1.4s var(--ease);
+}
+
+.reveal-img.is-in img {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+}

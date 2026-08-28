@@ -1,0 +1,160 @@
+---
+import type { Dict } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const home = t.lang === 'en' ? '/en/' : '/it/';
+const links = [
+  ['/en/', t.nav.home],
+  ['#story', t.nav.story],
+  ['#menu', t.nav.menu],
+  ['#gallery', t.nav.gallery],
+  ['#reserve', t.nav.contact],
+];
+const socials = [
+  ['https://www.instagram.com', 'Instagram'],
+  ['https://www.facebook.com', 'Facebook'],
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="footer-wordmark" href={home}>{t.brand}</a>
+      <p class="footer-tagline">{t.footer.tagline}</p>
+      <p class="footer-place">{t.footer.place}</p>
+      <p class="footer-cuisine">{t.footer.cuisine}</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        {
+          links.map(([href, label]) => (
+            <li><a href={href}>{label}</a></li>
+          ))
+        }
+        {
+          socials.map(([href, label]) => (
+            <li><a href={href} rel="noopener noreferrer" target="_blank">{label}</a></li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="footer-legal">
+      <a href="#">{t.footer.legal[0]}</a>
+      <a href="#">{t.footer.legal[1]}</a>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <p>© {new Date().getFullYear()} {t.brand}. {t.footer.credits}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--olive);
+    color: var(--ivory);
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    letter-spacing: 0.38em;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ivory);
+  }
+
+  .footer-tagline {
+    margin: 0.9rem 0 0;
+    font-size: 0.92rem;
+    color: rgba(247, 242, 232, 0.85);
+  }
+
+  .footer-place {
+    margin: 1.3rem 0 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 232, 0.6);
+  }
+
+  .footer-cuisine {
+    margin: 0.85rem 0 0;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(247, 242, 232, 0.55);
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-nav a {
+    color: rgba(247, 242, 232, 0.85);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.3s;
+  }
+
+  .footer-nav a:hover {
+    color: var(--ivory);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-end;
+  }
+
+  .footer-legal a {
+    color: rgba(247, 242, 232, 0.6);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-legal a:hover {
+    color: var(--ivory);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--line-light);
+    padding-block: 1.3rem;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(247, 242, 232, 0.5);
+  }
+
+  @media (max-width: 720px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2.2rem;
+    }
+    .footer-legal {
+      align-items: flex-start;
+    }
+  }
+</style>

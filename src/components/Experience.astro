@@ -1,0 +1,122 @@
+---
+import type { Dict } from '../i18n';
+import { img } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const main = img('photo-1555396273-367ea4eb4db5', 1400);
+const second = img('photo-1514933651103-005eec06c04b', 800);
+---
+
+<section class="experience on-olive" id="experience">
+  <div class="wrap experience-grid">
+    <div class="experience-copy">
+      <p class="label reveal">{t.experience.label}</p>
+      <h2 class="h-serif reveal experience-title">
+        {t.experience.title}
+        <em>{t.experience.sub}</em>
+      </h2>
+      <p class="reveal">{t.experience.p1}</p>
+      <p class="reveal">{t.experience.p2}</p>
+      <a class="btn btn--ghost-light reveal" href="#reserve">{t.experience.cta}</a>
+    </div>
+
+    <div class="experience-media">
+      <div class="reveal-img experience-main">
+        <img src={main} alt="Dishes shared on the table at Hostariola" loading="lazy" />
+      </div>
+      <div class="reveal-img experience-second">
+        <img src={second} alt="The candlelit room in the evening" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    background: var(--olive);
+    color: var(--ivory);
+    position: relative;
+  }
+
+  .experience::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      80% 60% at 85% 0%,
+      rgba(247, 242, 232, 0.06),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .experience-title {
+    font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+    margin: 1.2rem 0 1.8rem;
+    max-width: 12ch;
+  }
+
+  .experience-title em {
+    display: block;
+    font-style: italic;
+    font-weight: 340;
+    color: #d9c8ae;
+    margin-top: 0.2rem;
+  }
+
+  .experience-copy p:not(.label):not(.h-serif) {
+    color: rgba(247, 242, 232, 0.82);
+    max-width: 46ch;
+  }
+
+  .experience-copy .btn {
+    margin-top: 1rem;
+  }
+
+  .experience-media {
+    position: relative;
+    padding-bottom: 3.5rem;
+  }
+
+  .experience-main img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .experience-second {
+    position: absolute;
+    left: -1.5rem;
+    bottom: 0;
+    width: 46%;
+    margin: 0;
+  }
+
+  .experience-second img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 6px solid var(--olive);
+  }
+
+  @media (max-width: 900px) {
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .experience-second {
+      left: 0;
+    }
+  }
+</style>

@@ -1,0 +1,223 @@
+---
+import type { Dict } from '../i18n';
+import { img } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const hero = img('photo-1517248135467-4c7edcad34c4', 2000);
+---
+
+<section class="hero" aria-label={t.brand}>
+  <img class="hero-img" src={hero} alt="The warm dining room of Hostariola at dusk" fetchpriority="high" />
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content wrap">
+    <p class="hero-kicker anim">{t.hero.kicker}</p>
+    <h1 class="hero-title anim">
+      {t.hero.titlePart1}
+      <em>{t.hero.titlePart2}</em>
+    </h1>
+    <p class="hero-sub anim">{t.hero.sub}</p>
+    <div class="hero-ctas anim">
+      <a class="btn btn--wine" href="#menu">{t.hero.ctaPrimary}</a>
+      <a class="btn btn--ghost-light" href="#reserve">{t.hero.ctaSecondary}</a>
+    </div>
+    <div class="hero-loc anim">
+      <span class="hero-loc-line"></span>
+      {t.hero.location}
+    </div>
+  </div>
+
+  <a class="hero-scroll" href="#story" aria-label={t.hero.scroll}>
+    <span>{t.hero.scroll}</span>
+    <span class="hero-scroll-track"><span class="hero-scroll-dot"></span></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    animation: kenburns 18s ease-out both;
+  }
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 16, 12, 0.52) 0%,
+        rgba(18, 16, 12, 0.12) 34%,
+        rgba(18, 16, 12, 0.58) 78%,
+        rgba(18, 16, 12, 0.82) 100%
+      ),
+      radial-gradient(120% 80% at 20% 20%, transparent 40%, rgba(18, 16, 12, 0.3) 100%);
+  }
+
+  .hero-content {
+    padding-top: 8rem;
+    padding-bottom: clamp(3rem, 8vh, 6rem);
+    color: var(--ivory);
+  }
+
+  .hero-kicker {
+    font-size: 0.76rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    opacity: 0.92;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 380;
+    line-height: 1.02;
+    margin: 1.1rem 0 0;
+    max-width: 13ch;
+    font-size: clamp(2.6rem, 7.5vw, 5.4rem);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: #ead9c0;
+  }
+
+  .hero-sub {
+    margin: 1.4rem 0 0;
+    max-width: 44ch;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: rgba(247, 242, 232, 0.86);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.1rem;
+  }
+
+  .hero-loc {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-top: 2.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .hero-loc-line {
+    width: 3rem;
+    height: 1px;
+    background: var(--ivory);
+    opacity: 0.6;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    right: var(--gutter);
+    bottom: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--ivory);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    writing-mode: vertical-rl;
+  }
+
+  .hero-scroll-track {
+    width: 1px;
+    height: 3.4rem;
+    background: rgba(247, 242, 232, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-scroll-dot {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: var(--ivory);
+    animation: drop 2.2s var(--ease) infinite;
+  }
+
+  @keyframes drop {
+    0% {
+      top: -40%;
+    }
+    100% {
+      top: 110%;
+    }
+  }
+
+  /* entrance */
+  .anim {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: rise 0.9s var(--ease) forwards;
+  }
+  .hero-kicker {
+    animation-delay: 0.1s;
+  }
+  .hero-title {
+    animation-delay: 0.25s;
+  }
+  .hero-sub {
+    animation-delay: 0.4s;
+  }
+  .hero-ctas {
+    animation-delay: 0.55s;
+  }
+  .hero-loc {
+    animation-delay: 0.7s;
+  }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .hero-scroll {
+      display: none;
+    }
+    .hero-title {
+      max-width: 12ch;
+    }
+  }
+</style>

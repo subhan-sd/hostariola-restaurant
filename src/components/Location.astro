@@ -1,0 +1,223 @@
+---
+import type { Dict } from '../i18n';
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const phone = t.location.phone.replace(/[^\d+]/g, '');
+const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Colorno,Parma,Italy';
+---
+
+<section class="section location" id="contact">
+  <div class="wrap location-grid">
+    <div class="location-copy">
+      <p class="label reveal">{t.location.label}</p>
+      <h2 class="h-serif reveal location-title">{t.location.title}</h2>
+      <p class="reveal location-sub">{t.location.sub}</p>
+
+      <dl class="reveal">
+        <div class="info">
+          <dt>{t.location.addressLabel}</dt>
+          <dd>{t.location.address}</dd>
+        </div>
+        <div class="info">
+          <dt>{t.location.hoursLabel}</dt>
+          <dd>
+            <ul>
+              {
+                t.location.hours.map(([day, hours]) => (
+                  <li><span>{day}</span><span>{hours}</span></li>
+                ))
+              }
+            </ul>
+          </dd>
+        </div>
+        <div class="info">
+          <dt>{t.location.contactLabel}</dt>
+          <dd>
+            <a href={`tel:${phone}`}>{t.location.phone}</a><br />
+            <a href={`mailto:${t.location.email}`}>{t.location.email}</a>
+          </dd>
+        </div>
+      </dl>
+      <p class="reveal location-placeholder">{t.location.placeholder}</p>
+    </div>
+
+    <div class="reveal map-wrap">
+      <div class="map" role="img" aria-label={t.location.title}>
+        <svg class="map-svg" viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="600" height="460" fill="#dfd4ba" />
+          <g stroke="#c3b28e" stroke-width="22" fill="none">
+            <path d="M90 0 Q140 150 90 460" />
+            <path d="M520 0 Q470 210 560 460" />
+            <path d="M-40 150 Q330 130 640 175" />
+            <path d="M-40 330 Q260 290 640 330" />
+          </g>
+          <g stroke="#efe6d3" stroke-width="11" fill="none">
+            <path d="M140 0 Q170 180 120 460" />
+            <path d="M590 220 Q430 240 370 460" />
+          </g>
+          <g fill="#a3a07a">
+            <circle cx="210" cy="120" r="8" />
+            <circle cx="450" cy="300" r="6" />
+            <circle cx="330" cy="90" r="5" />
+          </g>
+          <circle cx="300" cy="225" r="26" fill="#efe6d3" opacity="0.25" />
+          <circle cx="300" cy="225" r="9" fill="#76272b" stroke="#f7f2e8" stroke-width="3" />
+          <circle cx="300" cy="225" r="30" fill="none" stroke="#76272b" stroke-width="1.5" opacity="0.5" />
+        </svg>
+        <div class="map-label">
+          <span class="map-label-brand">{t.brand}</span>
+          <span class="map-label-place">{t.footer.place}</span>
+        </div>
+      </div>
+      <div class="map-ctas">
+        <a class="btn btn--olive" href={mapsUrl} rel="noopener">{t.location.mapCta}</a>
+        <a class="btn btn--ghost" href="#reserve">{t.location.reserveCta}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location {
+    background: var(--cream);
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: center;
+  }
+
+  .location-title {
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    margin: 1.2rem 0 1rem;
+  }
+
+  .location-sub {
+    color: var(--ink-soft);
+    max-width: 38ch;
+  }
+
+  dl {
+    margin: 2.2rem 0 0;
+  }
+
+  .info {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(34, 31, 25, 0.18);
+  }
+
+  .info dt {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--umber);
+    padding-top: 0.2rem;
+  }
+
+  .info dd {
+    margin: 0;
+    font-size: 0.98rem;
+  }
+
+  .info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .info li span:first-child {
+    color: var(--ink-soft);
+  }
+
+  .info a {
+    color: var(--ink);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .info a:hover {
+    color: var(--wine);
+  }
+
+  .location-placeholder {
+    font-size: 0.82rem;
+    color: var(--umber);
+    margin-top: 1.6rem;
+  }
+
+  .map-wrap {
+    min-width: 0;
+  }
+
+  .map {
+    position: relative;
+    aspect-ratio: 6 / 4.6;
+    overflow: hidden;
+    border: 8px solid var(--ivory);
+    box-shadow: 0 24px 60px -30px rgba(34, 31, 25, 0.5);
+  }
+
+  .map-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(247, 242, 232, 0.94);
+    padding: 0.7rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map-label-brand {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    font-size: 0.95rem;
+  }
+
+  .map-label-place {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--umber);
+    margin-top: 0.2rem;
+  }
+
+  .map-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.4rem;
+  }
+
+  @media (max-width: 860px) {
+    .location-grid {
+      grid-template-columns: 1fr;
+    }
+    .info {
+      grid-template-columns: 8rem 1fr;
+    }
+  }
+</style>
