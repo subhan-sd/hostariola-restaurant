@@ -219,5 +219,21 @@ const hero = img('photo-1517248135467-4c7edcad34c4', 2000);
     .hero-title {
       max-width: 12ch;
     }
+    .hero-ctas {
+      max-width: 24rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero-ctas {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-ctas .btn {
+      width: 100%;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 9.5vw, 2.8rem);
+    }
   }
 </style>

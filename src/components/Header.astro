@@ -39,7 +39,7 @@ const links = [
       </ul>
     </nav>
 
-    <div class="header-actions">
+<div class="header-actions">
       <a class="lang-toggle site-nav-only" href={alt} hreflang={t.lang === 'en' ? 'it' : 'en'}>
         {t.lang === 'en' ? 'IT' : 'EN'}
       </a>
@@ -50,21 +50,23 @@ const links = [
       </button>
     </div>
   </div>
-
-  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <nav aria-label="Mobile">
-      <a href={home}>{t.nav.home}</a>
-      <a href="#story">{t.nav.story}</a>
-      <a href="#menu">{t.nav.menu}</a>
-      <a href="#gallery">{t.nav.gallery}</a>
-      <a href="#contact">{t.nav.contact}</a>
-      <a class="mobile-book btn btn--wine" href="#reserve">{t.nav.book}</a>
-      <a class="lang-toggle" href={alt} hreflang={t.lang === 'en' ? 'it' : 'en'}>
-        {t.lang === 'en' ? 'Versione italiana' : 'English version'}
-      </a>
-    </nav>
-  </div>
 </header>
+
+<div class="nav-scrim" aria-hidden="true"></div>
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <button class="nav-close" type="button" aria-label="Close menu">×</button>
+  <nav aria-label="Mobile">
+    <a href={home}>{t.nav.home}</a>
+    <a href="#story">{t.nav.story}</a>
+    <a href="#menu">{t.nav.menu}</a>
+    <a href="#gallery">{t.nav.gallery}</a>
+    <a href="#contact">{t.nav.contact}</a>
+    <a class="mobile-book btn btn--wine" href="#reserve">{t.nav.book}</a>
+    <a class="lang-toggle" href={alt} hreflang={t.lang === 'en' ? 'it' : 'en'}>
+      {t.lang === 'en' ? 'Versione italiana' : 'English version'}
+    </a>
+  </nav>
+</div>
 
 <style>
   .site-header {
@@ -87,7 +89,7 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 0.9rem;
   }
 
   .wordmark {
@@ -181,6 +183,10 @@ const links = [
     background: var(--ink);
   }
 
+  .nav-scrim {
+    display: none;
+  }
+
   .mobile-nav {
     display: none;
   }
@@ -193,59 +199,131 @@ const links = [
       display: none;
     }
     .header-book {
-      padding: 0.7rem 1.2rem;
-      font-size: 0.72rem;
+      padding: 0.65rem 1rem;
+      font-size: 0.68rem;
+    }
+    .wordmark-name {
+      font-size: 1.1rem;
+    }
+    .wordmark-line {
+      font-size: 0.55rem;
+    }
+    .nav-toggle,
+    .nav-toggle span {
+      display: flex;
     }
     .nav-toggle {
-      display: flex;
-      margin-left: 0.9rem;
+      margin-left: 0.5rem;
     }
-    .mobile-nav {
+    .nav-scrim {
       display: block;
       position: fixed;
       inset: 0;
+      background: rgba(20, 18, 14, 0.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s var(--ease);
+      z-index: 54;
+    }
+    .nav-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(86vw, 21rem);
       background: var(--olive);
       color: var(--ivory);
-      padding: 6rem var(--gutter) 3rem;
+      padding: 4.6rem var(--gutter) 2rem;
       transform: translateX(100%);
       transition: transform 0.5s var(--ease);
       z-index: 55;
       overflow-y: auto;
       visibility: hidden;
       pointer-events: none;
+      box-shadow: -24px 0 60px -30px rgba(20, 18, 14, 0.6);
     }
     .mobile-nav.open {
       transform: translateX(0);
       visibility: visible;
       pointer-events: auto;
     }
+    .nav-close {
+      position: absolute;
+      top: 1.15rem;
+      right: var(--gutter);
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      background: none;
+      border: 1px solid rgba(247, 242, 232, 0.35);
+      border-radius: 50%;
+      color: var(--ivory);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .nav-close:hover {
+      background: var(--wine);
+      border-color: var(--wine);
+    }
     .mobile-nav nav {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.1rem;
     }
     .mobile-nav nav > a:not(.btn) {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 7vw, 2.2rem);
+      font-size: 1.55rem;
+      font-weight: 420;
       color: var(--ivory);
       text-decoration: none;
-      padding: 0.7rem 0;
+      padding: 0.5rem 0;
       border-bottom: 1px solid var(--line-light);
     }
     .mobile-nav nav > a:not(.btn):hover {
       color: var(--cream);
     }
     .mobile-book {
-      margin-top: 2.2rem;
+      margin-top: 1.15rem;
+      padding: 0.7rem 1rem;
+      font-size: 0.72rem;
       align-self: center;
+      width: 100%;
     }
     .lang-toggle {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.8rem;
+      margin-top: 1.4rem;
+      align-self: center;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       opacity: 0.7;
+      border-bottom: 0;
+      padding: 0.3rem 0;
+    }
+  }
+
+  @media (max-width: 860px) and (max-height: 680px) {
+    .mobile-nav {
+      padding-top: 4rem;
+      padding-bottom: 1.4rem;
+    }
+    .mobile-nav nav > a:not(.btn) {
+      font-size: 1.25rem;
+      padding: 0.32rem 0;
+    }
+    .mobile-book {
+      margin-top: 0.9rem;
+    }
+    .lang-toggle {
+      margin-top: 1rem;
     }
   }
 
@@ -253,9 +331,5 @@ const links = [
     .lang-toggle.site-nav-only {
       display: none;
     }
-  }
-
-  .no-scroll {
-    overflow: hidden;
   }
 </style>

@@ -29,19 +29,30 @@ function initHeader() {
 function initNav() {
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const nav = document.querySelector<HTMLElement>('.mobile-nav');
+  const scrim = document.querySelector<HTMLElement>('.nav-scrim');
   if (!toggle || !nav) return;
   const close = () => {
     nav.classList.remove('open');
+    scrim?.classList.remove('open');
     nav.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
+    toggle.focus();
+  };
+  const open = () => {
+    nav.classList.add('open');
+    scrim?.classList.add('open');
+    nav.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    toggle.setAttribute('aria-expanded', 'true');
+    nav.querySelector<HTMLAnchorElement>('a')?.focus();
   };
   toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    nav.setAttribute('aria-hidden', String(!isOpen));
-    document.body.classList.toggle('no-scroll', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
+    if (nav.classList.contains('open')) close();
+    else open();
   });
   nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  nav.querySelector('.nav-close')?.addEventListener('click', close);
+  scrim?.addEventListener('click', close);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') close();
   });
