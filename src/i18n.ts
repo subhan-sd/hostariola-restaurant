@@ -1,28 +1,25 @@
 export const images = {
-  hero: "photo-1517248135467-4c7edcad34c4",
-  storyMain: "photo-1466978913421-dad2ebd01d17",
-  storySecondary: "photo-1552566626-52f8b828add9",
-  dishAperitivo: "photo-1504674900247-0877df9cc836",
-  dishPrimo: "photo-1414235077428-338989a2e8c0",
-  dishSecondo: "photo-1600891964092-4316c288032e",
-  dishDolce: "photo-1550966871-3ed3cdb5ed0c",
-  experienceMain: "photo-1555396273-367ea4eb4db5",
-  experienceSecondary: "photo-1514933651103-005eec06c04b",
+  hero: "hero.webp",
+  storyMain: "story-main.webp",
+  storySecondary: "story-detail.webp",
+  dishAperitivo: "dish-antipasto.webp",
+  dishPrimo: "dish-primo.jpg",
+  dishSecondo: "dish-secondo.jpg",
+  dishDolce: "dish-dolce.jpg",
+  experienceMain: "exp-main.webp",
+  experienceSecondary: "exp-detail.webp",
 };
 
 export const galleryImages = [
-  "photo-1476224203421-9ac39bcb3327",
-  "photo-1547573854-74d2a71d0826",
-  "photo-1424847651672-bf20a4b0982b",
-  "photo-1565299624946-b28f40a0ae38",
-  "photo-1551183053-bf91a1d81141",
-  "photo-1559339352-11d035aa65de",
+  "gal-1.webp",
+  "gal-2.webp",
+  "gal-3.jpg",
+  "gal-4.webp",
+  "gal-5.webp",
+  "gal-6.jpg",
 ];
 
-const src = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=75`;
-
-export const img = (id: string, w: number) => `${src(id)}&w=${w}`;
+export const img = (id: string) => `/images/${id}`;
 
 export interface Dish {
   name: string;
@@ -76,35 +73,35 @@ export const en = {
     items: [
       {
         dish: {
-          name: "Tortelli d\u2019Erbetta",
-          desc: "Handmade parcels of spinach and ricotta, dressed simply with melted butter and Parmigiano Reggiano.",
-          category: "Primo Piatti",
+          name: "Tagliolini ai Funghi Porcini",
+          desc: "Fresh tagliolini with porcini mushrooms and a touch of parsley — a taste of the autumn woods in a single plate.",
+          category: "Primi",
         } as Dish,
-        image: img("photo-1414235077428-338989a2e8c0", 900),
+        image: img(images.dishPrimo),
       },
       {
         dish: {
-          name: "Anolini in Brodo",
-          desc: "Filled pasta served in a golden beef broth, the quiet, slow classic of the houses of Parma.",
-          category: "Primo Piatti",
+          name: "Prosciutto e Salumi del Territorio",
+          desc: "Aged local cured meats served with warm gnocco fritto — the classic Emilian beginning.",
+          category: "Antipasti",
         } as Dish,
-        image: img("photo-1504674900247-0877df9cc836", 900),
+        image: img(images.dishAperitivo),
       },
       {
         dish: {
-          name: "Stracotto al Vino Rosso",
-          desc: "Beef braised for hours in red wine until it yields to the touch, served with its own rich reduction.",
+          name: "Carne alla Brace",
+          desc: "Grilled over the embers and finished simply — meat at its most honest, served with the season.",
           category: "Secondi",
         } as Dish,
-        image: img("photo-1600891964092-4316c288032e", 900),
+        image: img(images.dishSecondo),
       },
       {
         dish: {
-          name: "Zuppa Inglese",
-          desc: "A layered Emilian trifle of soft cake, custard and a generous veil of local liqueur.",
+          name: "Sbrisolona con Zabaione",
+          desc: "The crumbly almond cake of the Emilia borderlands, served warm with a spoon of zabaione.",
           category: "Dolci",
         } as Dish,
-        image: img("photo-1550966871-3ed3cdb5ed0c", 900),
+        image: img(images.dishDolce),
       },
     ] as { dish: Dish; image: string }[],
     cta: "Explore the Menu",
@@ -122,12 +119,12 @@ export const en = {
     title: "Moments at the Table",
     sub: "The room, the light, the food and the people who make an evening at Hostariola.",
     captions: [
-      "Handmade pasta of the day",
-      "Wine of Emilia, by the glass and by the bottle",
-      "The table is set",
-      "Dishes that come to share",
-      "From the kitchen to the table",
-      "Evening light",
+      "Spaghetti alla Carbonara",
+      "Ravioli della Casa",
+      "Bistecca alla Fiorentina",
+      "Carpaccio di Manzo",
+      "Panna Cotta di stagione",
+      "Trippa alla Parmigiana",
     ],
   },
   menu: {
@@ -139,8 +136,8 @@ export const en = {
         title: "Antipasti",
         items: [
           {
-            name: "Affettati della Casa",
-            desc: "A board of local cured meats with crescentine and a touch of mostarda.",
+            name: "Prosciutto e Salumi",
+            desc: "Aged local cured meats with warm gnocco fritto and mostarda.",
             price: "€ XX",
           },
           {
@@ -149,8 +146,8 @@ export const en = {
             price: "€ XX",
           },
           {
-            name: "Parmigiana di Melanzane",
-            desc: "Baked aubergine, tomato and fior di latte, served warm.",
+            name: "Gnocco Fritto",
+            desc: "Fried Emilian dough, served warm to share.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -159,18 +156,18 @@ export const en = {
         title: "Primi",
         items: [
           {
-            name: "Tortelli d\u2019Erbetta",
-            desc: "Butter, sage and Parmigiano Reggiano.",
+            name: "Tagliolini ai Funghi Porcini",
+            desc: "Fresh tagliolini with porcini, a touch of parsley.",
             price: "€ XX",
           },
           {
-            name: "Anolini in Brodo",
-            desc: "Filled pasta in a long-simmered beef broth.",
+            name: "Carbonara",
+            desc: "Spaghetti with egg, guanciale, pecorino and pepper.",
             price: "€ XX",
           },
           {
-            name: "Tagliatelle al Rag\u00f9",
-            desc: "The slow sauce of Emilia on fresh hand-cut noodles.",
+            name: "Spaghetti All\u2019Alberto",
+            desc: "The house recipe, from our kitchen\u2019s notebook.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -179,18 +176,18 @@ export const en = {
         title: "Secondi",
         items: [
           {
-            name: "Stracotto al Vino Rosso",
-            desc: "Braise of beef in red wine, soft polenta on the side.",
+            name: "Bistecca Fiorentina",
+            desc: "Grilled over the embers, seasoned simply.",
             price: "€ XX",
           },
           {
-            name: "Pollo al Mattone",
-            desc: "Chicken pressed under the brick, rosemary and lemon.",
+            name: "Carne alla Brace",
+            desc: "Grigliata \u2014 the way Emilia grills: slow, over the fire.",
             price: "€ XX",
           },
           {
-            name: "Fritto Misto del Po",
-            desc: "A crisp selection of the river\u2019s fish, with grilled vegetables.",
+            name: "Trippa alla Parmigiana",
+            desc: "Tripe slow-cooked with Parmigiano, potatoes and herbs.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -199,18 +196,18 @@ export const en = {
         title: "Dolci",
         items: [
           {
-            name: "Zuppa Inglese",
-            desc: "The Emilian trifle, layered and generous.",
+            name: "Sbrisolona con Zabaione",
+            desc: "The crumbly almond cake, served warm with zabaione.",
             price: "€ XX",
           },
           {
-            name: "Torta di Mele",
-            desc: "Warm apple cake with cream fresh from the dairy.",
+            name: "Panna Cotta",
+            desc: "Cream set simply, with fruit of the season.",
             price: "€ XX",
           },
           {
-            name: "Gelato Artigianale",
-            desc: "Three seasonal flavors, made in the house.",
+            name: "Dolce della Casa",
+            desc: "The dessert of the day, from our kitchen.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -327,35 +324,35 @@ export const it: Dict = {
     items: [
       {
         dish: {
-          name: "Tortelli d\u2019Erbetta",
-          desc: "Pasta fresca ripiena di spinaci e ricotta, condita solo con burro fuso e Parmigiano Reggiano.",
-          category: "Primo Piatti",
+          name: "Tagliolini ai Funghi Porcini",
+          desc: "Tagliolini freschi ai funghi porcini con un tocco di prezzemolo: il bosco d\u2019autunno in un piatto.",
+          category: "Primi",
         } as Dish,
-        image: img("photo-1414235077428-338989a2e8c0", 900),
+        image: img(images.dishPrimo),
       },
       {
         dish: {
-          name: "Anolini in Brodo",
-          desc: "Pasta ripiena servita in un brodo di manzo dorato: il grande classico delle case di Parma.",
-          category: "Primo Piatti",
+          name: "Prosciutto e Salumi del Territorio",
+          desc: "Salumi locali stagionati con gnocco fritto caldo: il classico inizio emiliano.",
+          category: "Antipasti",
         } as Dish,
-        image: img("photo-1504674900247-0877df9cc836", 900),
+        image: img(images.dishAperitivo),
       },
       {
         dish: {
-          name: "Stracotto al Vino Rosso",
-          desc: "Manzo brasato per ore nel vino rosso finch\u00e9 si scioglie, servito con il suo fondo.",
+          name: "Carne alla Brace",
+          desc: "Cottura sulla brace e finitura semplice: la carne nella sua forma pi\u00f9 onesta, con la stagione.",
           category: "Secondi",
         } as Dish,
-        image: img("photo-1600891964092-4316c288032e", 900),
+        image: img(images.dishSecondo),
       },
       {
         dish: {
-          name: "Zuppa Inglese",
-          desc: "Il dolce al cucchiaio dell\u2019Emilia: pan di Spagna, crema e un velo generoso di liquore.",
+          name: "Sbrisolona con Zabaione",
+          desc: "La torta sbriciolata delle terre dell\u2019Emilia, servita calda con un cucchiaio di zabaione.",
           category: "Dolci",
         } as Dish,
-        image: img("photo-1550966871-3ed3cdb5ed0c", 900),
+        image: img(images.dishDolce),
       },
     ] as { dish: Dish; image: string }[],
     cta: "Esplora il Menu",
@@ -373,12 +370,12 @@ export const it: Dict = {
     title: "Momenti a Tavola",
     sub: "La sala, la luce, il cibo e le persone che rendono speciale una serata da Hostariola.",
     captions: [
-      "La pasta fatta in casa",
-      "I vini dell\u2019Emilia",
-      "La tavola \u00e8 pronta",
-      "Portate da condividere",
-      "Dalla cucina alla tavola",
-      "La luce della sera",
+      "Spaghetti alla Carbonara",
+      "I Ravioli della Casa",
+      "Bistecca alla Fiorentina",
+      "Carpaccio di Manzo",
+      "La Panna Cotta di stagione",
+      "Trippa alla Parmigiana",
     ],
   },
   menu: {
@@ -390,8 +387,8 @@ export const it: Dict = {
         title: "Antipasti",
         items: [
           {
-            name: "Affettati della Casa",
-            desc: "Salumi del territorio con crescentine e un tocco di mostarda.",
+            name: "Prosciutto e Salumi",
+            desc: "Salumi locali stagionati con gnocco fritto caldo e mostarda.",
             price: "€ XX",
           },
           {
@@ -400,8 +397,8 @@ export const it: Dict = {
             price: "€ XX",
           },
           {
-            name: "Parmigiana di Melanzane",
-            desc: "Melanzane al forno, pomodoro e fior di latte.",
+            name: "Gnocco Fritto",
+            desc: "Impasto emiliano fritto, servito caldo da condividere.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -410,18 +407,18 @@ export const it: Dict = {
         title: "Primi",
         items: [
           {
-            name: "Tortelli d\u2019Erbetta",
-            desc: "Burro e salvia, Parmigiano Reggiano.",
+            name: "Tagliolini ai Funghi Porcini",
+            desc: "Tagliolini freschi ai porcini, un tocco di prezzemolo.",
             price: "€ XX",
           },
           {
-            name: "Anolini in Brodo",
-            desc: "Pasta ripiena in un brodo di manzo lungo.",
+            name: "Carbonara",
+            desc: "Spaghetti con uovo, guanciale, pecorino e pepe.",
             price: "€ XX",
           },
           {
-            name: "Tagliatelle al Rag\u00f9",
-            desc: "Il rag\u00f9 d\u2019Emilia su tagliatelle fresche.",
+            name: "Spaghetti All\u2019Alberto",
+            desc: "La ricetta della casa, dal ricettario della nostra cucina.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -430,18 +427,18 @@ export const it: Dict = {
         title: "Secondi",
         items: [
           {
-            name: "Stracotto al Vino Rosso",
-            desc: "Brasato di manzo al vino rosso, polenta morbida.",
+            name: "Bistecca Fiorentina",
+            desc: "Cotta sulla brace, condita semplicemente.",
             price: "€ XX",
           },
           {
-            name: "Pollo al Mattone",
-            desc: "Pollo al mattone, rosmarino e limone.",
+            name: "Carne alla Brace",
+            desc: "Come griglia l\u2019Emilia: lenta, sul fuoco vivo.",
             price: "€ XX",
           },
           {
-            name: "Fritto Misto del Po",
-            desc: "Pesce di fiume croccante, verdure alla griglia.",
+            name: "Trippa alla Parmigiana",
+            desc: "Trippa cotta lentamente con Parmigiano, patate ed erbe.",
             price: "€ XX",
           },
         ] as MenuItem[],
@@ -450,18 +447,18 @@ export const it: Dict = {
         title: "Dolci",
         items: [
           {
-            name: "Zuppa Inglese",
-            desc: "Il dolce dell\u2019Emilia, stratificato e generoso.",
+            name: "Sbrisolona con Zabaione",
+            desc: "La torta sbriciolata, servita calda con zabaione.",
             price: "€ XX",
           },
           {
-            name: "Torta di Mele",
-            desc: "Torta di mele calda con crema fresca.",
+            name: "Panna Cotta",
+            desc: "Crema delicata, con frutta di stagione.",
             price: "€ XX",
           },
           {
-            name: "Gelato Artigianale",
-            desc: "Tre gusti di stagione, fatti in casa.",
+            name: "Dolce della Casa",
+            desc: "Il dolce del giorno, dalla nostra cucina.",
             price: "€ XX",
           },
         ] as MenuItem[],

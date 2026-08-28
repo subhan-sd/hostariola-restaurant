@@ -1,12 +1,12 @@
 ---
 import type { Dict } from '../i18n';
-import { img } from '../i18n';
+import { img, images } from '../i18n';
 interface Props {
   t: Dict;
 }
 const { t } = Astro.props;
-const main = img('photo-1466978913421-dad2ebd01d17', 900);
-const second = img('photo-1552566626-52f8b828add9', 700);
+const main = img(images.storyMain);
+const second = img(images.storySecondary);
 ---
 
 <section class="section story" id="story">

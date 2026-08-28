@@ -38,8 +38,8 @@ const items: G[] = galleryImages.map((id, i) => ({
           >
             <button type="button" class="gallery-btn" aria-label={`${t.gallery.label} — ${item.caption}`}>
               <img
-                src={img(item.id, 800)}
-                data-full={img(item.id, 1600)}
+src={img(item.id)}
+              data-full={img(item.id)}
                 alt={item.caption}
                 loading="lazy"
               />
@@ -59,7 +59,7 @@ const items: G[] = galleryImages.map((id, i) => ({
       {
         items.map((item, i) => (
           <div class="lightbox__img" hidden={i !== 0}>
-            <img src={img(item.id, 1600)} alt={item.caption} loading="lazy" />
+            <img src={img(item.id)} alt={item.caption} loading="lazy" />
           </div>
         ))
       }

@@ -1,12 +1,12 @@
 ---
 import type { Dict } from '../i18n';
-import { img } from '../i18n';
+import { img, images } from '../i18n';
 interface Props {
   t: Dict;
 }
 const { t } = Astro.props;
-const main = img('photo-1555396273-367ea4eb4db5', 1400);
-const second = img('photo-1514933651103-005eec06c04b', 800);
+const main = img(images.experienceMain);
+const second = img(images.experienceSecondary);
 ---
 
 <section class="experience on-olive" id="experience">

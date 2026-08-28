@@ -10,11 +10,9 @@ const lang = t.lang;
 const fullTitle = `Hostariola — Ristorante Italiano · Colorno, Parma`;
 const description =
   'Hostariola is a traditional Italian restaurant in Colorno, Parma — handmade pasta, local cured meats and the warm hospitality of Emilia-Romagna.';
-const ogImage =
-  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=75&w=1600';
 const domain = 'https://hostariola.example';
 const siteUrl = `${domain}/${lang}/`;
-const defaultPath = lang === 'en' ? '' : '/it';
+const ogImage = `${domain}/images/hero.webp`;
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
@@ -63,7 +61,6 @@ const schema = JSON.stringify({
     <script type="application/ld+json" set:html={schema}></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"

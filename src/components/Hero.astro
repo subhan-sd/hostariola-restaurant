@@ -1,11 +1,11 @@
 ---
 import type { Dict } from '../i18n';
-import { img } from '../i18n';
+import { img, images } from '../i18n';
 interface Props {
   t: Dict;
 }
 const { t } = Astro.props;
-const hero = img('photo-1517248135467-4c7edcad34c4', 2000);
+const hero = img(images.hero);
 ---
 
 <section class="hero" aria-label={t.brand}>
