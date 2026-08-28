@@ -5,7 +5,9 @@ interface Props {
 }
 const { t } = Astro.props;
 const phone = t.location.phone.replace(/[^\d+]/g, '');
-const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Colorno,Parma,Italy';
+const wa = t.location.whatsapp.replace(/[^\d]/g, '');
+const waUrl = `https://wa.me/${wa}`;
+const mapsUrl = t.location.mapUrl;
 ---
 
 <section class="section location" id="contact">
@@ -36,11 +38,11 @@ const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Colorno,Parma,I
           <dt>{t.location.contactLabel}</dt>
           <dd>
             <a href={`tel:${phone}`}>{t.location.phone}</a><br />
-            <a href={`mailto:${t.location.email}`}>{t.location.email}</a>
+            <a href={`mailto:${t.location.email}`}>{t.location.email}</a><br />
+            <a class="info-wa" href={waUrl} target="_blank" rel="noopener">{t.location.whatsappCta}</a>
           </dd>
         </div>
       </dl>
-      <p class="reveal location-placeholder">{t.location.placeholder}</p>
     </div>
 
     <div class="reveal map-wrap">
@@ -155,10 +157,19 @@ const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Colorno,Parma,I
     color: var(--wine);
   }
 
-  .location-placeholder {
+  .info-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.35rem;
     font-size: 0.82rem;
-    color: var(--umber);
-    margin-top: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+
+  .info-wa:hover {
+    color: var(--wine);
   }
 
   .map-wrap {

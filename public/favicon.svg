@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="64" fill="#76272b"/>
-  <circle cx="64" cy="64" r="48" fill="none" stroke="#f7f2e8" stroke-width="2"/>
-  <text x="64" y="86" text-anchor="middle" font-family="Georgia, serif" font-size="58" font-style="italic" fill="#f7f2e8">H</text>
+  <defs>
+    <radialGradient id="g" cx="42%" cy="34%" r="78%">
+      <stop offset="0%" stop-color="#8a3438"/>
+      <stop offset="62%" stop-color="#76272b"/>
+      <stop offset="100%" stop-color="#5f1e21"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="64" fill="url(#g)"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#f7f2e8" stroke-width="1.6" opacity="0.9"/>
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#f7f2e8" stroke-width="0.8" opacity="0.6"/>
+  <text x="46" y="54" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="13" letter-spacing="1" fill="#ead9c0" opacity="0.85">H · R</text>
+  <text x="64" y="92" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="52" fill="#f7f2e8">H</text>
 </svg>
